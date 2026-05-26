@@ -1,0 +1,231 @@
+/* Main menu body (tokens inherited from ZenithShell .page) */
+.main {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--app-spacing-xl) var(--app-spacing-md);
+  gap: var(--app-spacing-xl);
+}
+
+@media (min-width: 768px) {
+  .main {
+    padding: 48px;
+  }
+}
+
+.heroTitleBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--app-spacing-md);
+  width: 100%;
+  max-width: 720px;
+}
+
+.mainMenuTitle {
+  margin: 0;
+  font-family: var(--font-orbitron), sans-serif;
+  font-weight: 800;
+  font-style: italic;
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--dojo-title);
+}
+
+.divider {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--dojo-border) 50%,
+    transparent 100%
+  );
+}
+
+.grid {
+  display: grid;
+  width: 100%;
+  max-width: 1024px;
+  gap: var(--app-spacing-xl);
+  align-items: start;
+}
+
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: minmax(280px, 488px) 1fr;
+    gap: 48px;
+    align-items: stretch;
+  }
+
+  .startColumn {
+    order: 1;
+  }
+
+  .linksColumn {
+    order: 2;
+  }
+}
+
+.startColumn {
+  width: 100%;
+}
+
+.linksColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-spacing-md);
+  width: 100%;
+}
+
+.startLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 280px;
+  padding: clamp(32px, 5vw, 50px);
+  text-align: center;
+  text-decoration: none;
+  color: #0a0a0a;
+  background-color: var(--dojo-gold-bright);
+  border: 2px solid rgba(233, 196, 0, 0.35);
+  border-radius: 4px;
+  box-shadow: 0 0 24px rgba(233, 196, 0, 0.22);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 28px) 0,
+    100% 28px,
+    100% 100%,
+    28px 100%,
+    0 calc(100% - 28px)
+  );
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.startLink:hover {
+  box-shadow: 0 0 36px rgba(233, 196, 0, 0.35);
+}
+
+.startLink:focus-visible {
+  outline: 3px solid var(--dojo-lavender);
+  outline-offset: 4px;
+}
+
+.fighterWrap {
+  display: flex;
+  justify-content: center;
+  padding-bottom: var(--app-spacing-md);
+  color: #0a0a0a;
+  opacity: 0.9;
+}
+
+.startHeading {
+  margin: 0;
+  font-family: var(--font-orbitron), sans-serif;
+  font-weight: 800;
+  font-style: italic;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.startTagline {
+  margin-top: var(--app-spacing-lg);
+  padding: 12px 24px 12px 28px;
+  border-left: 4px solid #705e00;
+  border-radius: 0 6px 6px 0;
+  background-color: rgba(112, 94, 0, 0.12);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  max-width: 100%;
+}
+
+.secondaryLink {
+  display: flex;
+  align-items: center;
+  gap: var(--app-spacing-md);
+  min-height: 112px;
+  padding: 24px 24px 24px 30px;
+  text-decoration: none;
+  color: inherit;
+  background-color: var(--dojo-card);
+  border-left: 6px solid var(--dojo-lavender);
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 0 12px rgba(210, 188, 251, 0.12);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.secondaryLink:hover {
+  background-color: #333333;
+  transform: translateX(2px);
+}
+
+.secondaryLink:focus-visible {
+  outline: 2px solid var(--dojo-gold);
+  outline-offset: 2px;
+}
+
+.iconBox {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 4px;
+  background-color: var(--dojo-icon-bg);
+  color: var(--dojo-lavender);
+}
+
+.secondaryBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.secondaryTitle {
+  margin: 0;
+  font-family: var(--font-orbitron), sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--dojo-lavender);
+}
+
+.secondaryDesc {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--dojo-caption);
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--dojo-lavender);
+  opacity: 0.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .startLink,
+  .secondaryLink {
+    transition: none;
+  }
+}

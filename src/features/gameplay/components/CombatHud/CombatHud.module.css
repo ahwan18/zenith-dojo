@@ -1,0 +1,39 @@
+.hud {
+  display: grid;
+  gap: var(--app-spacing-sm);
+  padding: var(--app-spacing-md);
+  border-radius: var(--app-radius-card);
+  border: 1px solid var(--app-border-subtle);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--app-spacing-sm);
+}
+
+.label {
+  margin: 0;
+  color: var(--app-text-secondary);
+}
+
+.value {
+  margin: 0;
+  font-weight: 800;
+}
+
+.progressTrack {
+  height: 10px;
+  border-radius: var(--app-radius-chip);
+  background: rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: var(--app-radius-chip);
+  background: linear-gradient(90deg, rgba(244, 201, 93, 0.7), rgba(125, 199, 217, 0.8));
+}
+

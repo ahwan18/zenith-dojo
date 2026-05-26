@@ -1,0 +1,29 @@
+:root {
+  --app-bg-primary: #e6f0ea;
+  --app-bg-card: #f8f8f6;
+
+  --app-accent-primary: #f4c95d;
+  --app-accent-secondary: #f28f8f;
+  --app-accent-blue: #7dc7d9;
+  --app-accent-purple: #c6a0f6;
+  --app-accent-green: #7bc29c;
+
+  --app-text-primary: #2a2a2a;
+  --app-text-secondary: #7a7a7a;
+
+  --app-radius-app: 36px;
+  --app-radius-card: 28px;
+  --app-radius-button: 20px;
+  --app-radius-chip: 999px;
+
+  --app-shadow-floating: 0 10px 40px rgba(0, 0, 0, 0.06);
+
+  --app-spacing-xs: 8px;
+  --app-spacing-sm: 12px;
+  --app-spacing-md: 16px;
+  --app-spacing-lg: 24px;
+  --app-spacing-xl: 32px;
+
+  --app-border-subtle: rgba(0, 0, 0, 0.06);
+}
+

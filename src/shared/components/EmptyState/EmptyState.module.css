@@ -1,0 +1,19 @@
+.container {
+  display: grid;
+  gap: 6px;
+  padding: var(--app-spacing-md);
+  border-radius: var(--app-radius-card);
+  border: 1px dashed rgba(0, 0, 0, 0.14);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.title {
+  margin: 0;
+  font-weight: 600;
+}
+
+.message {
+  margin: 0;
+  color: var(--app-text-secondary);
+}
+

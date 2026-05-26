@@ -1,0 +1,549 @@
+/* Finish Session — Figma node 2:1662 (full-viewport, no app chrome) */
+.root {
+  --fs-bg: #131313;
+  --fs-gold: #ffd700;
+  --fs-gold-deep: #705e00;
+  --fs-teal: #12f0ff;
+  --fs-cream: #fff6df;
+  --fs-title: #e5e2e1;
+  --fs-caption: #d0c6ab;
+  --fs-miss: #ffb4ab;
+  --fs-border: #4d4732;
+  --fs-card: rgba(32, 31, 31, 0.9);
+  --fs-card-soft: rgba(32, 31, 31, 0.8);
+  --fs-nested: rgba(53, 53, 52, 0.3);
+  --fs-track-off: #353534;
+
+  min-height: 100vh;
+  background: var(--fs-bg);
+  color: var(--fs-caption);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main {
+  width: 100%;
+  max-width: 1280px;
+  padding: 48px var(--app-spacing-md) 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 48px;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-orbitron), sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.75rem, 4.2vw, 2.5rem);
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  color: var(--fs-gold);
+  text-transform: uppercase;
+  text-shadow: 0 0 7.5px rgba(255, 215, 0, 0.3);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: var(--fs-caption);
+}
+
+.dashboard {
+  width: 100%;
+  max-width: 896px;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 800px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .scoreCard {
+    grid-column: 1 / -1 !important;
+  }
+
+  .rankCard {
+    grid-column: 1 / -1 !important;
+  }
+
+  .breakdownCard {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+.scoreCard {
+  grid-column: 1 / -1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 33px 24px;
+  border-radius: 8px;
+  border: 1px solid var(--fs-border);
+  overflow: hidden;
+}
+
+.scoreCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  backdrop-filter: blur(12px);
+  background: var(--fs-card);
+  pointer-events: none;
+}
+
+.scoreCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 1px 1px 0 1px rgba(255, 255, 255, 0.1),
+    inset -1px -1px 0 1px rgba(0, 0, 0, 0.5);
+}
+
+.scoreInner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scoreLabel {
+  margin: 0 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fs-caption);
+}
+
+.scoreValue {
+  margin: 0;
+  font-family: var(--font-orbitron), sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+  color: var(--fs-cream);
+  text-shadow: 0 0 10px rgba(255, 246, 223, 0.2);
+}
+
+.rankCard {
+  grid-column: 1 / span 5;
+  position: relative;
+  min-height: 280px;
+  border-radius: 0 8px 8px 0;
+  border: none;
+  border-left: 4px solid var(--fs-gold);
+  overflow: hidden;
+}
+
+.rankCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 0 8px 8px 0;
+  backdrop-filter: blur(8px);
+  background: var(--fs-card-soft);
+  pointer-events: none;
+}
+
+.rankCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 1px 1px 0 0 rgba(255, 255, 255, 0.1),
+    inset -1px -1px 0 0 rgba(0, 0, 0, 0.5);
+}
+
+.rankInner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 26px 20px 20px;
+  min-height: 100%;
+}
+
+.medalWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 128px;
+  height: 128px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  background: transparent;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+  color: var(--fs-gold);
+}
+
+.rankNumber {
+  margin: 0;
+  font-family: var(--font-orbitron), sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--fs-gold);
+}
+
+.rankLabel {
+  margin: 8px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--fs-caption);
+}
+
+.rankBadge {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 17px;
+  border-radius: 12px;
+  border: 1px solid var(--fs-border);
+  background: var(--fs-track-off);
+  color: var(--fs-teal);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.rankBadgeIcon {
+  display: flex;
+  color: var(--fs-teal);
+}
+
+.breakdownCard {
+  grid-column: 6 / -1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid var(--fs-border);
+  overflow: hidden;
+}
+
+.breakdownCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+  background: var(--fs-card-soft);
+  pointer-events: none;
+}
+
+.breakdownCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 1px 1px 0 0 rgba(255, 255, 255, 0.1),
+    inset -1px -1px 0 0 rgba(0, 0, 0, 0.5);
+}
+
+.breakdownInner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.breakdownHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 17px;
+  border-bottom: 1px solid var(--fs-border);
+  color: var(--fs-caption);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.breakdownGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 24px;
+}
+
+@media (max-width: 520px) {
+  .breakdownGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.statBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.statBlockLabel {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--fs-caption);
+}
+
+.statRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.statBig {
+  margin: 0;
+  font-family: var(--font-orbitron), sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--fs-cream);
+}
+
+.statSuffix {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #e9c400;
+}
+
+.segBar {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  margin-top: 8px;
+  height: 8px;
+}
+
+.seg {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  background: var(--fs-track-off);
+}
+
+.segCyan {
+  background: var(--fs-teal);
+}
+
+.segGold {
+  background: var(--fs-gold);
+}
+
+.nestedBox {
+  padding: 13px;
+  border-radius: 4px;
+  border: 1px solid rgba(77, 71, 50, 0.5);
+  background: var(--fs-nested);
+}
+
+.nestedBoxMiss {
+  border-color: rgba(255, 180, 171, 0.2);
+}
+
+.nestedHead {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--fs-caption);
+}
+
+.nestedHeadMiss {
+  color: var(--fs-miss);
+}
+
+.nestedValue {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--fs-title);
+}
+
+.nestedValueMiss {
+  color: var(--fs-miss);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 672px;
+  margin-top: 48px;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 40px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: var(--fs-gold);
+  color: var(--fs-gold-deep);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+.btnPrimary:hover {
+  filter: brightness(1.05);
+}
+
+.btnPrimary:focus-visible {
+  outline: 2px solid var(--fs-teal);
+  outline-offset: 3px;
+}
+
+.btnGhost {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 18px 42px;
+  border: 2px solid var(--fs-border);
+  border-radius: 4px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--fs-cream);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow:
+    inset 1px 1px 0 0 rgba(255, 255, 255, 0.1),
+    inset -1px -1px 0 0 rgba(0, 0, 0, 0.5);
+}
+
+.btnGhost:hover {
+  border-color: rgba(255, 215, 0, 0.45);
+}
+
+.btnGhost:focus-visible {
+  outline: 2px solid var(--fs-gold);
+  outline-offset: 3px;
+}
+
+.mainMenu {
+  margin-top: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fs-caption);
+  text-decoration: none;
+}
+
+.mainMenu:hover {
+  color: var(--fs-cream);
+}
+
+.mainMenu:focus-visible {
+  outline: 2px solid var(--fs-gold);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.emptyWrap {
+  width: 100%;
+  max-width: 480px;
+  margin-top: 48px;
+  padding: 40px 28px;
+  border-radius: 8px;
+  border: 1px dashed var(--fs-border);
+  background: rgba(42, 42, 42, 0.4);
+  text-align: center;
+}
+
+.emptyTitle {
+  margin: 0 0 8px;
+  font-family: var(--font-orbitron), sans-serif;
+  font-size: 1.25rem;
+  color: var(--fs-cream);
+}
+
+.emptyText {
+  margin: 0 0 24px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--fs-caption);
+}
+
+.emptyActions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 440px) {
+  .emptyActions {
+    flex-direction: row;
+    justify-content: center;
+  }
+}

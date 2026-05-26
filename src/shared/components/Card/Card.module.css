@@ -1,0 +1,31 @@
+.card {
+  background: var(--app-bg-card);
+  border-radius: var(--app-radius-card);
+  border: 1px solid var(--app-border-subtle);
+  box-shadow: var(--app-shadow-floating);
+  padding: var(--app-spacing-lg);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: var(--app-spacing-md);
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--app-text-secondary);
+  font-size: 13px;
+}
+
+.content {
+  display: grid;
+  gap: var(--app-spacing-md);
+}
+

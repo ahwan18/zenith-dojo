@@ -1,0 +1,76 @@
+.arena {
+  position: relative;
+  height: 360px;
+  border-radius: var(--app-radius-card);
+  border: 1px solid var(--app-border-subtle);
+  background: linear-gradient(135deg, rgba(125, 199, 217, 0.14), rgba(198, 160, 246, 0.12));
+  overflow: hidden;
+}
+
+.hint {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--app-text-secondary);
+  text-align: center;
+  padding: var(--app-spacing-lg);
+}
+
+.target {
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--app-radius-chip);
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, rgba(244, 201, 93, 0.9) 45%, rgba(244, 201, 93, 0.65) 100%);
+  box-shadow: var(--app-shadow-floating);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.targetRing {
+  position: absolute;
+  inset: -10px;
+  border-radius: var(--app-radius-chip);
+  border: 2px solid rgba(244, 201, 93, 0.55);
+}
+
+.feedback {
+  position: absolute;
+  left: 50%;
+  top: 18px;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  border-radius: var(--app-radius-chip);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--app-border-subtle);
+  box-shadow: var(--app-shadow-floating);
+  font-weight: 700;
+}
+
+.feedbackHit {
+  color: var(--app-accent-green);
+}
+
+.feedbackMiss {
+  color: var(--app-accent-secondary);
+}
+
+.debug {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 6px 10px;
+  border-radius: var(--app-radius-button);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--app-border-subtle);
+  color: var(--app-text-secondary);
+  font-size: 12px;
+  max-width: 70%;
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  .arena {
+    height: 300px;
+  }
+}

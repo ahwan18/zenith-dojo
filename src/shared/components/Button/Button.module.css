@@ -1,0 +1,33 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--app-spacing-xs);
+  padding: 12px 18px;
+  border-radius: var(--app-radius-button);
+  border: 1px solid var(--app-border-subtle);
+  box-shadow: var(--app-shadow-floating);
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease, background-color 140ms ease;
+  user-select: none;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button:not(:disabled):active {
+  transform: translateY(1px);
+}
+
+.primary {
+  background: linear-gradient(180deg, #ffe6a0 0%, var(--app-accent-primary) 100%);
+  color: #1f1f1f;
+}
+
+.secondary {
+  background: var(--app-bg-card);
+  color: var(--app-text-primary);
+}
+

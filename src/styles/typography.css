@@ -1,0 +1,26 @@
+:root {
+  --font-inter: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-orbitron: "Orbitron", sans-serif;
+}
+
+html {
+  font-family: var(--font-inter);
+  color: var(--app-text-primary);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-orbitron), var(--font-inter), system-ui, sans-serif;
+  letter-spacing: 0.3px;
+}
+
+p {
+  line-height: 1.55;
+  color: var(--app-text-primary);
+}
+
+small {
+  color: var(--app-text-secondary);
+}
+

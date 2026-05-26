@@ -1,0 +1,102 @@
+.root {
+  position: fixed;
+  inset: 0;
+  background: #020617;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  max-width: 600px;
+  padding: 40px;
+  text-align: center;
+}
+
+.logoWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: 8px;
+  background: linear-gradient(to bottom, #fff, #64748b);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  margin: 0;
+}
+
+.storyBox {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.narrative {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #94a3b8;
+  font-style: italic;
+  max-width: 80%;
+}
+
+.progressContainer {
+  width: 300px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  position: relative;
+  overflow: visible;
+}
+
+.progressBar {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  transition: width 0.1s linear;
+}
+
+.percentage {
+  position: absolute;
+  right: -40px;
+  top: -20px;
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.status {
+  font-size: 14px;
+  color: #475569;
+  font-family: monospace;
+}
+
+.startBtn {
+  padding: 16px 32px;
+  background: white;
+  color: #020617;
+  border: none;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.startBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
+}

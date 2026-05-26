@@ -1,0 +1,65 @@
+.container {
+  display: grid;
+  gap: var(--app-spacing-md);
+}
+
+.brand {
+  padding: var(--app-spacing-md);
+  border-radius: var(--app-radius-card);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--app-border-subtle);
+  box-shadow: var(--app-shadow-floating);
+}
+
+.brandTitle {
+  margin: 0;
+  font-size: 16px;
+}
+
+.brandSubtitle {
+  margin: 0;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--app-text-secondary);
+}
+
+.list {
+  display: grid;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: var(--app-radius-button);
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid var(--app-border-subtle);
+  transition: transform 140ms ease, background-color 140ms ease;
+}
+
+.item:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.active {
+  background: rgba(244, 201, 93, 0.35);
+  border-color: rgba(244, 201, 93, 0.55);
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pill {
+  padding: 2px 10px;
+  border-radius: var(--app-radius-chip);
+  font-size: 12px;
+  color: var(--app-text-secondary);
+  background: rgba(0, 0, 0, 0.04);
+}
+

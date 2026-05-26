@@ -1,0 +1,7 @@
+.row {
+  display: flex;
+  gap: var(--app-spacing-sm);
+  flex-wrap: wrap;
+  align-items: center;
+}
+

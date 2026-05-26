@@ -1,0 +1,227 @@
+/* Choose mode — Figma node 2:874 */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--app-spacing-xl) var(--app-spacing-md) 48px;
+  gap: var(--app-spacing-xl);
+}
+
+@media (min-width: 768px) {
+  .main {
+    padding: 48px 48px 64px;
+  }
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  max-width: 672px;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-orbitron), sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  color: var(--dojo-cream);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--dojo-caption);
+  max-width: 52ch;
+}
+
+.grid {
+  display: grid;
+  width: 100%;
+  gap: var(--app-spacing-lg);
+}
+
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+  }
+}
+
+.modeCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+  padding: 32px;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  font: inherit;
+  background-color: #1c1b1b;
+  box-shadow:
+    inset 1px 1px 0 0 rgba(255, 255, 255, 0.05),
+    inset -1px -1px 0 0 rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modeCard:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 1px 1px 0 0 rgba(255, 255, 255, 0.07),
+    inset -1px -1px 0 0 rgba(0, 0, 0, 0.5),
+    0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.modeCard:focus-visible {
+  outline: 2px solid var(--dojo-gold);
+  outline-offset: 3px;
+}
+
+.modeCardGold {
+  border-left: 2px solid var(--dojo-gold);
+}
+
+.modeCardPurple {
+  border-left: 2px solid var(--dojo-lavender);
+}
+
+.watermark {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  opacity: 0.12;
+  color: var(--dojo-title);
+  pointer-events: none;
+}
+
+.iconBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+}
+
+.iconBadgeGold {
+  background-color: var(--dojo-gold);
+  color: #131313;
+  box-shadow: 0 0 10px rgba(233, 196, 0, 0.3);
+}
+
+.iconBadgePurple {
+  background-color: var(--dojo-lavender);
+  color: #2a1f3d;
+  box-shadow: 0 0 10px rgba(210, 188, 251, 0.2);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.modeLabel {
+  margin: 0;
+  padding-top: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.modeLabelGold {
+  color: var(--dojo-gold);
+}
+
+.modeLabelPurple {
+  color: var(--dojo-lavender);
+}
+
+.modeTitle {
+  margin: 0;
+  font-family: var(--font-orbitron), sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--dojo-title);
+}
+
+.modeCopy {
+  padding-top: 8px;
+}
+
+.modeDescLine {
+  margin: 0 0 0.35em;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--dojo-caption);
+}
+
+.modeDescLine:last-child {
+  margin-bottom: 0;
+}
+
+.footerRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 32px;
+  margin-top: auto;
+}
+
+.track {
+  flex: 1;
+  height: 2px;
+  background-color: var(--dojo-border);
+  position: relative;
+}
+
+.trackFillGold {
+  position: absolute;
+  inset: 0 33% 0 0;
+  background-color: var(--dojo-gold);
+}
+
+.trackFillPurple {
+  position: absolute;
+  inset: 0 33% 0 0;
+  background-color: var(--dojo-lavender);
+}
+
+.chevron {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.chevronGold {
+  color: var(--dojo-gold);
+}
+
+.chevronPurple {
+  color: var(--dojo-lavender);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modeCard {
+    transition: none;
+  }
+}

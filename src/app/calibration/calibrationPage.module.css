@@ -1,0 +1,19 @@
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--app-spacing-lg) var(--app-spacing-md) 48px;
+}
+
+.grid {
+  display: grid;
+  gap: var(--app-spacing-lg);
+}
+
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+    align-items: start;
+  }
+}

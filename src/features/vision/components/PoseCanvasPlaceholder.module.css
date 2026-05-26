@@ -1,0 +1,16 @@
+.placeholder {
+  height: 320px;
+  border-radius: var(--app-radius-card);
+  border: 1px dashed rgba(0, 0, 0, 0.14);
+  background: linear-gradient(135deg, rgba(125, 199, 217, 0.18), rgba(198, 160, 246, 0.18));
+  display: grid;
+  place-items: center;
+  padding: var(--app-spacing-lg);
+}
+
+.label {
+  margin: 0;
+  color: var(--app-text-secondary);
+  text-align: center;
+}
+

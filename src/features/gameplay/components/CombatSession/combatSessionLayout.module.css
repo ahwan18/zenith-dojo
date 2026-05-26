@@ -1,0 +1,453 @@
+/* AR camera session chrome — Figma Camera Mode node 2:1274 */
+.root {
+  --ar-gold: #e9c400;
+  --ar-gold-bright: #ffe16d;
+  --ar-cream: #fff6df;
+  --ar-caption: #d0c6ab;
+  --ar-panel: rgba(28, 27, 27, 0.9);
+  --ar-panel-strong: rgba(42, 42, 42, 0.8);
+  --ar-border: #4d4732;
+  --ar-gold-line: rgba(233, 196, 0, 0.2);
+  --ar-miss: #ffb4ab;
+  --ar-lavender: #d2bcfb;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #000;
+  color: var(--ar-caption);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.topBar {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--ar-border);
+  background: rgba(19, 19, 19, 0.95);
+}
+
+.topLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--app-spacing-md);
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--ar-border);
+  background: var(--ar-panel-strong);
+  color: var(--ar-cream);
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.backButton:hover {
+  border-color: var(--ar-gold);
+  background: rgba(42, 42, 42, 1);
+}
+
+.backButton:focus-visible {
+  outline: 2px solid var(--ar-gold);
+  outline-offset: 2px;
+}
+
+.brand {
+  margin: 0;
+  font-family: var(--font-orbitron), sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.1rem, 2.2vw, 1.875rem);
+  letter-spacing: -0.06em;
+  color: var(--ar-gold);
+}
+
+.topRight {
+  display: flex;
+  align-items: center;
+  gap: var(--app-spacing-md);
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--ar-border);
+  background: var(--ar-panel-strong);
+  color: var(--ar-cream);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.iconButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.iconButton:not(:disabled):hover {
+  border-color: var(--ar-gold);
+}
+
+.body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) minmax(0, 1fr) minmax(260px, 320px);
+  min-height: 0;
+}
+
+@media (max-width: 1100px) {
+  .body {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .asideLeft {
+    order: 2;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .center {
+    order: 1;
+    min-height: 52vh;
+  }
+
+  .asideRight {
+    order: 3;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+.aside {
+  backdrop-filter: blur(6px);
+  background: var(--ar-panel);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--app-spacing-xl);
+  min-height: 0;
+}
+
+.asideLeft {
+  composes: aside;
+  border-right: 1px solid var(--ar-gold-line);
+}
+
+.asideRight {
+  composes: aside;
+  border-left: 1px solid var(--ar-gold-line);
+}
+
+.center {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: #131313;
+}
+
+.centerInner {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.endSessionWrap {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+}
+
+.endSessionButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 25px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 180, 171, 0.5);
+  background: rgba(255, 180, 171, 0.1);
+  color: var(--ar-miss);
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: var(--font-inter), sans-serif;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 180, 171, 0.2);
+}
+
+.endSessionButton:hover {
+  background: rgba(255, 180, 171, 0.18);
+}
+
+.endSessionButton:focus-visible {
+  outline: 2px solid var(--ar-miss);
+  outline-offset: 2px;
+}
+
+.bottomRail {
+  border-top: 1px solid rgba(77, 71, 50, 0.45);
+  background: rgba(19, 19, 19, 0.92);
+  padding: var(--app-spacing-sm) var(--app-spacing-md);
+  max-height: 220px;
+  overflow: auto;
+}
+
+/* Left HUD */
+.hpBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.hpHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.hpTitle {
+  margin: 0;
+  font-family: var(--font-orbitron), sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 28px;
+  letter-spacing: 0.1em;
+  color: var(--ar-cream);
+}
+
+.hpPercent {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ar-cream);
+}
+
+.hpTrack {
+  height: 24px;
+  border: 1px solid var(--ar-border);
+  background: #353534;
+  overflow: hidden;
+  position: relative;
+}
+
+.hpFill {
+  position: absolute;
+  inset: 3px;
+  width: auto;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--ar-gold) 0%, var(--ar-gold-bright) 100%);
+  transform-origin: left center;
+  transition: transform 0.25s ease;
+}
+
+.hpTicks {
+  display: flex;
+  gap: 4px;
+}
+
+.hpTickOn {
+  height: 4px;
+  width: 32px;
+  background: var(--ar-gold);
+}
+
+.hpTickOff {
+  height: 4px;
+  width: 32px;
+  background: rgba(233, 196, 0, 0.3);
+}
+
+.timerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: var(--app-spacing-lg);
+}
+
+.timerLabel {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ar-caption);
+}
+
+.timerValue {
+  margin: 0;
+  font-family: var(--font-orbitron), sans-serif;
+  font-size: 22px;
+  color: var(--ar-cream);
+}
+
+.streakBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.streakLabel {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--ar-gold);
+}
+
+.streakRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.streakValue {
+  margin: 0;
+  font-family: var(--font-orbitron), sans-serif;
+  font-size: 16px;
+  color: var(--ar-gold);
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.35);
+}
+
+.streakCombo {
+  margin: 0;
+  font-family: var(--font-orbitron), sans-serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--ar-gold);
+}
+
+.streakTrack {
+  margin-top: 8px;
+  height: 4px;
+  width: 100%;
+  background: rgba(233, 196, 0, 0.2);
+  position: relative;
+}
+
+.streakFill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  background: var(--ar-gold);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.35);
+  transition: width 0.2s ease;
+}
+
+/* Right HUD */
+.scoreCluster {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.scoreLabel {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: var(--ar-caption);
+}
+
+.scoreCard {
+  width: 100%;
+  padding: 19px 28px 19px 24px;
+  border-right: 4px solid var(--ar-gold);
+  background: var(--ar-panel-strong);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.scoreValue {
+  margin: 0;
+  font-family: var(--font-orbitron), sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--ar-cream);
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.45);
+  letter-spacing: 0.04em;
+}
+
+.statsCard {
+  width: 100%;
+  border-left: 4px solid var(--ar-miss);
+  background: var(--ar-panel-strong);
+  backdrop-filter: blur(2px);
+  padding: 16px 16px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.statRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.statLabel {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--ar-caption);
+}
+
+.statMiss {
+  margin: 0;
+  font-family: var(--font-orbitron), sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ar-miss);
+}
+
+.statAccuracy {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ar-cream);
+}
+
+.dots {
+  display: flex;
+  gap: 4px;
+  justify-content: flex-end;
+  padding-top: 4px;
+}
+
+.dotOn {
+  width: 8px;
+  height: 8px;
+  background: var(--ar-miss);
+}
+
+.dotOff {
+  width: 8px;
+  height: 8px;
+  background: var(--ar-border);
+}

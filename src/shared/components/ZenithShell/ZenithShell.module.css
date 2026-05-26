@@ -1,0 +1,121 @@
+/* Shared full-viewport dojo chrome (Figma Zenith screens) */
+.page {
+  --dojo-bg: #131313;
+  --dojo-bg-overlay: rgba(19, 19, 19, 0.92);
+  --dojo-border: #4d4732;
+  --dojo-gold: #e9c400;
+  --dojo-gold-bright: #ffd700;
+  --dojo-title: #e5e2e1;
+  --dojo-card: #2a2a2a;
+  --dojo-lavender: #d2bcfb;
+  --dojo-caption: #d0c6ab;
+  --dojo-icon-bg: #4f3d73;
+  --dojo-footer: rgba(208, 198, 171, 0.5);
+  --dojo-cream: #fff6df;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--dojo-bg);
+  color: var(--dojo-caption);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.bgTexture {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(233, 196, 0, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(210, 188, 251, 0.06) 0%, transparent 50%),
+    linear-gradient(180deg, #1a1a1a 0%, var(--dojo-bg) 45%, #0d0d0d 100%);
+}
+
+.header {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--app-spacing-md) var(--app-spacing-xl);
+  border-bottom: 1px solid var(--dojo-border);
+  background: var(--dojo-bg-overlay);
+  backdrop-filter: blur(8px);
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding: 16px 48px 17px;
+  }
+}
+
+.brandLink {
+  margin: 0;
+  font-family: var(--font-orbitron), sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  letter-spacing: -0.05em;
+  color: var(--dojo-gold);
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.brandLink:hover {
+  color: var(--dojo-gold-bright);
+}
+
+.brandLink:focus-visible {
+  outline: 2px solid var(--dojo-lavender);
+  outline-offset: 3px;
+}
+
+.profileLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--app-radius-button);
+  border: 1px solid rgba(77, 71, 50, 0.6);
+  color: var(--dojo-title);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.profileLink:hover {
+  background-color: rgba(210, 188, 251, 0.08);
+  border-color: var(--dojo-lavender);
+}
+
+.profileLink:focus-visible {
+  outline: 2px solid var(--dojo-gold);
+  outline-offset: 2px;
+}
+
+.shellBody {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
+}
+
+.footer {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  padding: 33px var(--app-spacing-md) 32px;
+  border-top: 1px solid rgba(77, 71, 50, 0.35);
+  text-align: center;
+}
+
+.footerText {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dojo-footer);
+}
