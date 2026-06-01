@@ -1,13 +1,17 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
-import { APP_ROUTES } from "@/constants/appConstants";
+import { APP_ROUTES, AUTHENTICATED_HOME_ROUTE } from "@/constants/appConstants";
 import { supabase } from "@/lib/supabase";
 
 export function AuthRedirectHandler() {
   const router = useRouter();
+  const pathname = usePathname();
+
+  const shouldMoveAuthenticatedUserToMenu =
+    pathname === APP_ROUTES.home || pathname === APP_ROUTES.auth;
 
   useEffect(() => {
     const handleHashCallback = async () => {
@@ -40,11 +44,24 @@ export function AuthRedirectHandler() {
         return;
       }
 
-      router.replace(APP_ROUTES.menu);
+      router.replace(AUTHENTICATED_HOME_ROUTE);
     };
 
     void handleHashCallback();
   }, [router]);
+
+  useEffect(() => {
+    if (!supabase || !shouldMoveAuthenticatedUserToMenu) return;
+
+    const { data } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!session) return;
+      router.replace(AUTHENTICATED_HOME_ROUTE);
+    });
+
+    return () => {
+      data.subscription.unsubscribe();
+    };
+  }, [router, shouldMoveAuthenticatedUserToMenu]);
 
   return null;
 }

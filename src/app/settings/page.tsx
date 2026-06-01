@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { ChevronLeft, Eye, EyeOff } from "lucide-react";
 
+import { AUTHENTICATED_HOME_ROUTE } from "@/constants/appConstants";
 import { ZenithShell } from "@/shared/components/ZenithShell/ZenithShell";
 import { useGameplayStore } from "@/features/gameplay";
 
@@ -17,7 +18,7 @@ export default function SettingsPage() {
   return (
     <ZenithShell>
       <main className={styles.main}>
-        <button type="button" onClick={() => router.push("/menu")} className={styles.backBtn}>
+        <button type="button" onClick={() => router.push(AUTHENTICATED_HOME_ROUTE)} className={styles.backBtn}>
           <ChevronLeft size={18} strokeWidth={2} aria-hidden="true" />
           Back to Menu
         </button>
@@ -46,4 +47,3 @@ export default function SettingsPage() {
     </ZenithShell>
   );
 }
-

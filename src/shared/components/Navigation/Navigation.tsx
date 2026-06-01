@@ -2,7 +2,7 @@ import type { ReactElement } from "react";
 import Link from "next/link";
 import { Home, Medal, Settings, Timer } from "lucide-react";
 
-import { APP_ROUTES } from "@/constants/appConstants";
+import { APP_ROUTES, AUTHENTICATED_HOME_ROUTE } from "@/constants/appConstants";
 
 import styles from "./Navigation.module.css";
 
@@ -22,7 +22,7 @@ export function Navigation({ activeItem }: NavigationProps): ReactElement {
 
       <div className={styles.list}>
         <Link
-          href={APP_ROUTES.home}
+          href={AUTHENTICATED_HOME_ROUTE}
           className={[styles.item, activeItem === "home" ? styles.active : ""]
             .filter(Boolean)
             .join(" ")}

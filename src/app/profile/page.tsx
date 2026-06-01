@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { LogOut, Trophy, History, User, ChevronLeft } from "lucide-react";
+import type { User as SupabaseUser } from "@supabase/supabase-js";
+
+import { APP_ROUTES, AUTHENTICATED_HOME_ROUTE } from "@/constants/appConstants";
 import { supabase } from "@/lib/supabase";
 
 import styles from "./profile.module.css";
@@ -18,7 +21,7 @@ interface SessionHistory {
 
 export default function ProfilePage() {
   const router = useRouter();
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<SupabaseUser | null>(null);
   const [history, setHistory] = useState<SessionHistory[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -26,13 +29,13 @@ export default function ProfilePage() {
     async function loadProfile() {
       try {
         if (!supabase) {
-          router.push("/auth");
+          router.push(APP_ROUTES.auth);
           return;
         }
         const { data: { user }, error } = await supabase.auth.getUser();
         if (error) throw error;
         if (!user) {
-          router.push("/auth");
+          router.push(APP_ROUTES.auth);
           return;
         }
         setUser(user);
@@ -56,7 +59,7 @@ export default function ProfilePage() {
   const handleSignOut = async () => {
     if (!supabase) return;
     await supabase.auth.signOut();
-    router.push("/auth");
+    router.push(APP_ROUTES.auth);
   };
 
   if (loading) return <div className={styles.loading}>Loading profile...</div>;
@@ -64,7 +67,7 @@ export default function ProfilePage() {
   return (
     <div className={styles.root}>
       <div className={styles.nav}>
-        <button onClick={() => router.push("/")} className={styles.backBtn}>
+        <button onClick={() => router.push(AUTHENTICATED_HOME_ROUTE)} className={styles.backBtn}>
           <ChevronLeft size={20} />
           Back to Menu
         </button>

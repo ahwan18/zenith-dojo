@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, AlertCircle, Camera, Sun, User } from "lucide-react";
 
+import { APP_ROUTES } from "@/constants/appConstants";
 import { useGameplayStore } from "@/features/gameplay/stores/gameplayStore";
 import { useVisionSession } from "@/features/vision/hooks/useVisionSession";
 import { CameraTargetOverlay } from "@/features/gameplay/components/CameraTargetOverlay/CameraTargetOverlay";
@@ -47,7 +48,7 @@ export default function CalibrationPage() {
     } else {
       // Finish calibration
       setGamePhase("loading");
-      router.push("/play/loading");
+      router.push(APP_ROUTES.playLoading);
     }
   };
 
@@ -86,7 +87,7 @@ export default function CalibrationPage() {
 
       <div className={styles.bodyModeConfirm}>
         <p>Selected Mode: <strong>{bodyMode === "full_body" ? "Full Body" : "Half Body"}</strong></p>
-        <button onClick={() => router.push("/play/body")} className={styles.changeBtn}>Change Mode</button>
+        <button onClick={() => router.push(APP_ROUTES.playBody)} className={styles.changeBtn}>Change Mode</button>
       </div>
     </div>
   );

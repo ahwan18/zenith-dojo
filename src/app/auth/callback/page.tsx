@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
-import { APP_ROUTES } from "@/constants/appConstants";
+import { APP_ROUTES, AUTHENTICATED_HOME_ROUTE } from "@/constants/appConstants";
 
 import styles from "./callback.module.css";
 
@@ -30,7 +30,7 @@ export default function AuthCallback() {
           }
 
           window.history.replaceState({}, document.title, APP_ROUTES.authCallback);
-          router.push(APP_ROUTES.home);
+          router.replace(AUTHENTICATED_HOME_ROUTE);
           return;
         }
 
@@ -60,7 +60,7 @@ export default function AuthCallback() {
           // Clear the hash from URL to prevent re-processing
           window.history.replaceState({}, document.title, APP_ROUTES.authCallback);
           
-          router.push(APP_ROUTES.home);
+          router.replace(AUTHENTICATED_HOME_ROUTE);
           return;
         }
         
@@ -73,7 +73,7 @@ export default function AuthCallback() {
         }
 
         if (data.session) {
-          router.push(APP_ROUTES.home);
+          router.replace(AUTHENTICATED_HOME_ROUTE);
         } else {
           router.push(`${APP_ROUTES.auth}?error=no_session`);
         }

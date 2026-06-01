@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Trophy, Crown, TrendingUp } from "lucide-react";
 
+import { AUTHENTICATED_HOME_ROUTE } from "@/constants/appConstants";
+
 import styles from "./leaderboard.module.css";
 
 interface Entry {
@@ -33,8 +35,8 @@ export default function LeaderboardPage() {
   return (
     <div className={styles.root}>
       <div className={styles.nav}>
-        <button onClick={() => router.push("/")} className={styles.backBtn}>
-          ← Back to Home
+        <button onClick={() => router.push(AUTHENTICATED_HOME_ROUTE)} className={styles.backBtn}>
+          ← Back to Menu
         </button>
       </div>
 

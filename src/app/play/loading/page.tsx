@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
+import { APP_ROUTES } from "@/constants/appConstants";
 import { useGameplayStore } from "@/features/gameplay/stores/gameplayStore";
 import { getFallbackLevel } from "@/features/gameplay/data/presets";
 import styles from "./loading.module.css";
@@ -58,7 +59,7 @@ export default function LoadingPage() {
   }, [progress, levelData]);
 
   const handleStart = () => {
-    router.push("/game");
+    router.push(APP_ROUTES.game);
   };
 
   return (

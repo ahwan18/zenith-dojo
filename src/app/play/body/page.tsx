@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Check, User, Scale } from "lucide-react";
 
+import { APP_ROUTES } from "@/constants/appConstants";
 import { useGameplayStore } from "@/features/gameplay/stores/gameplayStore";
 import styles from "./body.module.css";
 
@@ -40,7 +41,7 @@ export default function BodyModePage() {
 
     // 3. Move to calibration
     setGamePhase("calibrating");
-    router.push("/play/calibrate");
+    router.push(APP_ROUTES.playCalibrate);
   };
 
   return (

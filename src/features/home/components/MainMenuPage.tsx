@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { BarChart3, BookOpen, ChevronRight, PersonStanding, Settings } from "lucide-react";
 
+import { APP_ROUTES } from "@/constants/appConstants";
 import { ZenithShell } from "@/shared/components/ZenithShell/ZenithShell";
 
 import styles from "./MainMenuPage.module.css";
@@ -50,7 +51,7 @@ export function MainMenuPage(): ReactElement {
             whileTap={reduceMotion ? undefined : { scale: 0.99 }}
             transition={{ type: "spring", stiffness: 400, damping: 28 }}
           >
-            <Link href="/choose-mode" className={styles.startLink}>
+            <Link href={APP_ROUTES.chooseMode} className={styles.startLink}>
               <div className={styles.fighterWrap}>
                 <PersonStanding size={88} strokeWidth={1.5} aria-hidden="true" />
               </div>
@@ -69,19 +70,19 @@ export function MainMenuPage(): ReactElement {
 
           <div className={styles.linksColumn}>
             <SecondaryActionCard
-              href="/leaderboard"
+              href={APP_ROUTES.leaderboard}
               title="Leaderboard"
               description="Check rankings & rivals"
               icon={<BarChart3 size={28} strokeWidth={2} />}
             />
             <SecondaryActionCard
-              href="/settings"
+              href={APP_ROUTES.settings}
               title="Settings"
               description="Customize your experience"
               icon={<Settings size={28} strokeWidth={2} />}
             />
             <SecondaryActionCard
-              href="/play/calibrate"
+              href={APP_ROUTES.playCalibrate}
               title="Tutorial"
               description="Learn the ropes & master moves"
               icon={<BookOpen size={28} strokeWidth={2} />}

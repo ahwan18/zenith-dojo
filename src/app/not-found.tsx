@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { AUTHENTICATED_HOME_ROUTE } from "@/constants/appConstants";
+
 import styles from "./not-found.module.css";
 
 import { ZenithShell } from "@/shared/components/ZenithShell/ZenithShell";
@@ -16,7 +18,7 @@ export default function NotFoundPage() {
             <p>The URL may be wrong, or this screen has not been built yet.</p>
             <ActionRow>
               <Button asChild variant="primary">
-                <Link href="/">Back to home</Link>
+                <Link href={AUTHENTICATED_HOME_ROUTE}>Back to menu</Link>
               </Button>
             </ActionRow>
             <p>

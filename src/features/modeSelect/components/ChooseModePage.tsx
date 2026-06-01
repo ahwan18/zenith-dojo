@@ -4,6 +4,7 @@ import type { ReactElement } from "react";
 import { useRouter } from "next/navigation";
 import { BookOpen, ChevronRight, ListOrdered, Timer } from "lucide-react";
 
+import { APP_ROUTES } from "@/constants/appConstants";
 import { ZenithShell } from "@/shared/components/ZenithShell/ZenithShell";
 import { useGameplayStore } from "@/features/gameplay";
 
@@ -100,7 +101,7 @@ export function ChooseModePage(): ReactElement {
               setGameMode("story");
               setTimeDuration(90_000);
               setGamePhase("mode_select");
-              router.push("/play/body");
+              router.push(APP_ROUTES.playBody);
             }}
           />
           <ModeCard
@@ -117,7 +118,7 @@ export function ChooseModePage(): ReactElement {
               setGameMode("time_target");
               setTimeDuration(60_000);
               setGamePhase("mode_select");
-              router.push("/play/body");
+              router.push(APP_ROUTES.playBody);
             }}
           />
           <ModeCard
@@ -133,7 +134,7 @@ export function ChooseModePage(): ReactElement {
               setGameMode("practice");
               setTimeDuration(null);
               setGamePhase("mode_select");
-              router.push("/play/body");
+              router.push(APP_ROUTES.playBody);
             }}
           />
         </div>

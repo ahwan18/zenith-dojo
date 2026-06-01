@@ -1,11 +1,12 @@
 "use client";
 
+import type { FormEvent } from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Mail, Lock, User, LogIn, UserPlus, Gamepad2 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
-import { APP_ROUTES, buildPublicUrl } from "@/constants/appConstants";
+import { APP_ROUTES, AUTHENTICATED_HOME_ROUTE, buildPublicUrl } from "@/constants/appConstants";
 
 import styles from "./auth.module.css";
 
@@ -17,8 +18,12 @@ export default function AuthPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleAuth = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const getErrorMessage = (errorValue: unknown): string => {
+    return errorValue instanceof Error ? errorValue.message : "An unexpected error occurred";
+  };
+
+  const handleAuth = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setError(null);
     setLoading(true);
 
@@ -39,9 +44,9 @@ export default function AuthPage() {
         });
         if (authError) throw authError;
       }
-      router.push("/");
-    } catch (err: any) {
-      setError(err.message || "An unexpected error occurred");
+      router.replace(AUTHENTICATED_HOME_ROUTE);
+    } catch (errorValue) {
+      setError(getErrorMessage(errorValue));
     } finally {
       setLoading(false);
     }
@@ -54,14 +59,14 @@ export default function AuthPage() {
         throw new Error("Supabase is not configured.");
       }
       const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
+        provider: "google",
         options: {
           redirectTo: buildPublicUrl(APP_ROUTES.authCallback),
         },
       });
       if (error) throw error;
-    } catch (err: any) {
-      setError(err.message);
+    } catch (errorValue) {
+      setError(getErrorMessage(errorValue));
     } finally {
       setLoading(false);
     }
@@ -70,10 +75,8 @@ export default function AuthPage() {
   const handleGuestMode = async () => {
     setLoading(true);
     try {
-      // Guest mode usually implies a temporary session or a dummy account.
-      // For now, we redirect to the main menu as guest.
-      router.push("/");
-    } catch (err: any) {
+      router.replace(AUTHENTICATED_HOME_ROUTE);
+    } catch {
       setError("Failed to enter guest mode");
     } finally {
       setLoading(false);

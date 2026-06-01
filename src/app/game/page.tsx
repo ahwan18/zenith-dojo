@@ -3,6 +3,7 @@
 import { Suspense, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
+import { APP_ROUTES } from "@/constants/appConstants";
 // import { SenseiHud } from "@/features/sensei";
 import { useVisionSession } from "@/features/vision";
 import {
@@ -222,12 +223,12 @@ function GamePageContent() {
 
   useEffect(() => {
     if (gamePhase !== "finished") return;
-    router.push("/play/results");
+    router.push(APP_ROUTES.playResults);
   }, [gamePhase, router]);
 
   const handleEndSession = () => {
     endCombatSession();
-    router.push("/play/results");
+    router.push(APP_ROUTES.playResults);
   };
 
   const centerColumn = (

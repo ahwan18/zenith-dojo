@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Trophy, RotateCcw, Home, TrendingUp } from "lucide-react";
 
+import { APP_ROUTES, AUTHENTICATED_HOME_ROUTE } from "@/constants/appConstants";
 import { useGameplayStore } from "@/features/gameplay/stores/gameplayStore";
 import { supabase } from "@/lib/supabase";
 import styles from "./results.module.css";
@@ -90,7 +91,7 @@ export default function ResultsPage() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className={styles.secondaryBtn}
-            onClick={() => router.push("/menu")}
+            onClick={() => router.push(AUTHENTICATED_HOME_ROUTE)}
           >
             <Home size={20} />
             MAIN MENU
@@ -102,7 +103,7 @@ export default function ResultsPage() {
             className={styles.primaryBtn}
             onClick={() => {
               resetSession();
-              router.push("/play/body");
+              router.push(APP_ROUTES.playBody);
             }}
           >
             <RotateCcw size={20} />

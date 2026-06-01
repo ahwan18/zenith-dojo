@@ -27,10 +27,13 @@ export const APP_ROUTES = {
   playCalibrate: "/play/calibrate",
   playLoading: "/play/loading",
   playResults: "/play/results",
+  game: "/game",
   settings: "/settings",
   leaderboard: "/leaderboard",
   profile: "/profile",
 } as const;
+
+export const AUTHENTICATED_HOME_ROUTE = APP_ROUTES.menu;
 
 export function buildPublicUrl(path: string): string {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;

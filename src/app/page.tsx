@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Play, Trophy, User, LayoutGrid } from "lucide-react";
 
+import { APP_ROUTES } from "@/constants/appConstants";
+
 import styles from "./page.module.css";
 
 export default function LandingPage() {
@@ -22,8 +24,8 @@ export default function LandingPage() {
           <span className={styles.logoText}>Zenith Dojo</span>
         </div>
         <div className={styles.navLinks}>
-          <button onClick={() => router.push("/leaderboard")} className={styles.linkBtn}>Leaderboard</button>
-          <button onClick={() => router.push("/auth")} className={styles.authBtn}>Sign In</button>
+          <button onClick={() => router.push(APP_ROUTES.leaderboard)} className={styles.linkBtn}>Leaderboard</button>
+          <button onClick={() => router.push(APP_ROUTES.auth)} className={styles.authBtn}>Sign In</button>
         </div>
       </nav>
 
@@ -48,7 +50,7 @@ export default function LandingPage() {
               className={styles.mainCta}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => router.push("/auth")}
+              onClick={() => router.push(APP_ROUTES.auth)}
             >
               <Play fill="currentColor" size={20} />
               START YOUR JOURNEY
@@ -58,7 +60,7 @@ export default function LandingPage() {
               className={styles.secondaryCta}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => router.push("/auth")}
+              onClick={() => router.push(APP_ROUTES.auth)}
             >
               Try as Guest
             </motion.button>
