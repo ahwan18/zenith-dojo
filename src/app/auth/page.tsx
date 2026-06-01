@@ -50,7 +50,7 @@ export default function AuthPage() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: buildPublicUrl(APP_ROUTES.authCallback),
+          redirectTo: `${window.location.origin}${APP_ROUTES.authCallback}`,
         },
       });
       if (error) throw error;
