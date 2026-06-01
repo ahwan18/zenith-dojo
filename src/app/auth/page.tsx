@@ -30,7 +30,13 @@ export default function AuthPage() {
         const { error: authError } = await supabase.auth.signInWithPassword({ email, password });
         if (authError) throw authError;
       } else {
-        const { error: authError } = await supabase.auth.signUp({ email, password });
+        const { error: authError } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            emailRedirectTo: buildPublicUrl(APP_ROUTES.authCallback),
+          },
+        });
         if (authError) throw authError;
       }
       router.push("/");
@@ -50,7 +56,7 @@ export default function AuthPage() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}${APP_ROUTES.authCallback}`,
+          redirectTo: buildPublicUrl(APP_ROUTES.authCallback),
         },
       });
       if (error) throw error;

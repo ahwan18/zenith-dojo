@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
+import { APP_ROUTES } from "@/constants/appConstants";
 
 import styles from "./callback.module.css";
 
@@ -12,68 +13,72 @@ export default function AuthCallback() {
   useEffect(() => {
     const handleAuthCallback = async () => {
       if (!supabase) {
-        console.error("Supabase not configured");
-        router.push("/auth");
+        router.push(APP_ROUTES.auth);
         return;
       }
 
       try {
-        console.log("Auth callback - URL:", window.location.href);
-        console.log("Auth callback - Hash:", window.location.hash);
-        
+        const searchParams = new URLSearchParams(window.location.search);
+        const code = searchParams.get("code");
+
+        if (code) {
+          const { error: exchangeError } = await supabase.auth.exchangeCodeForSession(code);
+
+          if (exchangeError) {
+            router.push(`${APP_ROUTES.auth}?error=session_failed`);
+            return;
+          }
+
+          window.history.replaceState({}, document.title, APP_ROUTES.authCallback);
+          router.push(APP_ROUTES.home);
+          return;
+        }
+
         // Check URL hash for OAuth tokens
         const hashParams = new URLSearchParams(window.location.hash.substring(1));
         const accessToken = hashParams.get("access_token");
         const error = hashParams.get("error");
         const errorDescription = hashParams.get("error_description");
-        
-        console.log("Auth callback - Hash params:", { accessToken, error, errorDescription });
-        
+
         if (error) {
-          console.error("OAuth error:", error, errorDescription);
-          router.push(`/auth?error=${error}&description=${errorDescription}`);
+          router.push(`${APP_ROUTES.auth}?error=${error}&description=${errorDescription ?? ""}`);
           return;
         }
         
         if (accessToken) {
           // Exchange the access token for a session
-          console.log("Exchanging access token for session...");
           const { data: sessionData, error: sessionError } = await supabase.auth.setSession({
             access_token: accessToken,
             refresh_token: hashParams.get("refresh_token") || "",
           });
           
-          if (sessionError) {
-            console.error("Session error:", sessionError);
-            router.push("/auth?error=session_failed");
+          if (sessionError || !sessionData.session) {
+            router.push(`${APP_ROUTES.auth}?error=session_failed`);
             return;
           }
+
+          // Clear the hash from URL to prevent re-processing
+          window.history.replaceState({}, document.title, APP_ROUTES.authCallback);
           
-          console.log("Session established:", sessionData.session);
-          router.push("/");
+          router.push(APP_ROUTES.home);
           return;
         }
         
         // If no access token in hash, check existing session
         const { data, error: sessionError } = await supabase.auth.getSession();
-        console.log("Auth callback - Session check:", { data, sessionError });
         
         if (sessionError) {
-          console.error("Auth callback error:", sessionError);
-          router.push("/auth?error=auth_failed");
+          router.push(`${APP_ROUTES.auth}?error=auth_failed`);
           return;
         }
 
         if (data.session) {
-          console.log("Session found, redirecting to home");
-          router.push("/");
+          router.push(APP_ROUTES.home);
         } else {
-          console.log("No session found, redirecting to auth");
-          router.push("/auth?error=no_session");
+          router.push(`${APP_ROUTES.auth}?error=no_session`);
         }
       } catch (err) {
-        console.error("Auth callback exception:", err);
-        router.push("/auth?error=unknown");
+        router.push(`${APP_ROUTES.auth}?error=unknown`);
       }
     };
 
