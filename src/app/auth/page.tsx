@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Mail, Lock, User, LogIn, UserPlus, Gamepad2 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
+import { APP_ROUTES, buildPublicUrl } from "@/constants/appConstants";
 
 import styles from "./auth.module.css";
 
@@ -49,7 +50,7 @@ export default function AuthPage() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
+          redirectTo: buildPublicUrl(APP_ROUTES.authCallback),
         },
       });
       if (error) throw error;

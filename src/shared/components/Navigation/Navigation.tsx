@@ -2,6 +2,8 @@ import type { ReactElement } from "react";
 import Link from "next/link";
 import { Home, Medal, Settings, Timer } from "lucide-react";
 
+import { APP_ROUTES } from "@/constants/appConstants";
+
 import styles from "./Navigation.module.css";
 
 type NavigationItem = "home" | "sessions" | "ranking" | "settings";
@@ -20,7 +22,7 @@ export function Navigation({ activeItem }: NavigationProps): ReactElement {
 
       <div className={styles.list}>
         <Link
-          href="/"
+          href={APP_ROUTES.home}
           className={[styles.item, activeItem === "home" ? styles.active : ""]
             .filter(Boolean)
             .join(" ")}
@@ -33,7 +35,7 @@ export function Navigation({ activeItem }: NavigationProps): ReactElement {
         </Link>
 
         <Link
-          href="/calibration"
+          href={APP_ROUTES.playCalibrate}
           className={[styles.item, activeItem === "sessions" ? styles.active : ""]
             .filter(Boolean)
             .join(" ")}
@@ -46,7 +48,7 @@ export function Navigation({ activeItem }: NavigationProps): ReactElement {
         </Link>
 
         <Link
-          href="/session"
+          href={APP_ROUTES.leaderboard}
           className={[styles.item, activeItem === "ranking" ? styles.active : ""]
             .filter(Boolean)
             .join(" ")}
@@ -59,7 +61,7 @@ export function Navigation({ activeItem }: NavigationProps): ReactElement {
         </Link>
 
         <Link
-          href="/"
+          href={APP_ROUTES.settings}
           className={[styles.item, activeItem === "settings" ? styles.active : ""]
             .filter(Boolean)
             .join(" ")}
@@ -74,4 +76,3 @@ export function Navigation({ activeItem }: NavigationProps): ReactElement {
     </div>
   );
 }
-

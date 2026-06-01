@@ -3,10 +3,12 @@ import type { ReactNode } from "react";
 
 import "@/styles/globals.css";
 
+import { PUBLIC_APP_URL } from "@/constants/appConstants";
 import { Providers } from "./providers";
 import GeminiConnectionTest from "@/features/debug/GeminiConnectionTest";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(PUBLIC_APP_URL),
   title: {
     default: "Zenith: The Vision Master",
     template: "%s · Zenith",
@@ -36,4 +38,3 @@ export default function RootLayout({ children }: RootLayoutProps) {
     </html>
   );
 }
-

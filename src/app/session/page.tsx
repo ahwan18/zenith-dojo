@@ -5,6 +5,7 @@ import { useLayoutEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import { ArrowBigUpDash, Award, BarChart3, Home, RotateCcw, Share2, Target, X } from "lucide-react";
 
+import { APP_ROUTES, buildPublicUrl } from "@/constants/appConstants";
 import { useGameplayStore } from "@/features/gameplay";
 
 import {
@@ -57,12 +58,12 @@ export default function SessionPage() {
 
   const handlePlayAgain = () => {
     resetSession();
-    router.push("/choose-mode");
+    router.push(APP_ROUTES.chooseMode);
   };
 
   const handleShare = async () => {
     const text = `Zenith Dojo — Final score ${String(score).padStart(7, "0")} · ${accuracy}% accuracy · ${hits}/${totalTargets} targets`;
-    const url = typeof window !== "undefined" ? window.location.origin + "/session" : "";
+    const url = buildPublicUrl(APP_ROUTES.playResults);
     try {
       if (typeof navigator !== "undefined" && navigator.share) {
         await navigator.share({ title: "Session complete", text, url });
@@ -90,10 +91,10 @@ export default function SessionPage() {
               Finish a combat run (time up or End Session) to see your results here.
             </p>
             <div className={sessionStyles.emptyActions}>
-              <button type="button" className={sessionStyles.btnPrimary} onClick={() => router.push("/choose-mode")}>
+              <button type="button" className={sessionStyles.btnPrimary} onClick={() => router.push(APP_ROUTES.chooseMode)}>
                 Choose mode
               </button>
-              <button type="button" className={sessionStyles.btnGhost} onClick={() => router.push("/")}>
+              <button type="button" className={sessionStyles.btnGhost} onClick={() => router.push(APP_ROUTES.home)}>
                 Home
               </button>
             </div>
@@ -198,7 +199,7 @@ export default function SessionPage() {
               </button>
             </div>
 
-            <button type="button" className={sessionStyles.mainMenu} onClick={() => router.push("/")}>
+            <button type="button" className={sessionStyles.mainMenu} onClick={() => router.push(APP_ROUTES.home)}>
               <Home size={14} strokeWidth={2} aria-hidden />
               Main menu
             </button>

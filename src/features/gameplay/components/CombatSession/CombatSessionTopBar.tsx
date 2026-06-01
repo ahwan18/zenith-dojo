@@ -18,6 +18,8 @@ import type { ReactElement } from "react";
 import Link from "next/link";
 import { ArrowLeft, Pause, User } from "lucide-react";
 
+import { APP_ROUTES } from "@/constants/appConstants";
+
 import styles from "./combatSessionLayout.module.css";
 
 /**
@@ -32,7 +34,7 @@ export function CombatSessionTopBar(): ReactElement {
     <header className={styles.topBar}>
       {/* Left side: back button dan brand */}
       <div className={styles.topLeft}>
-        <Link href="/choose-mode" className={styles.backButton} aria-label="Back to mode select">
+        <Link href={APP_ROUTES.chooseMode} className={styles.backButton} aria-label="Back to mode select">
           <ArrowLeft size={22} strokeWidth={2} aria-hidden />
         </Link>
         <p className={styles.brand}>ZENITH</p>
@@ -43,7 +45,7 @@ export function CombatSessionTopBar(): ReactElement {
         <button type="button" className={styles.iconButton} disabled aria-label="Pause (coming soon)">
           <Pause size={20} strokeWidth={2} aria-hidden />
         </button>
-        <Link href="/session" className={styles.iconButton} aria-label="Session summary">
+        <Link href={APP_ROUTES.playResults} className={styles.iconButton} aria-label="Session summary">
           <User size={20} strokeWidth={2} aria-hidden />
         </Link>
       </div>

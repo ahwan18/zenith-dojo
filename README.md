@@ -11,9 +11,16 @@ A cinematic fusion of AI-driven storytelling and real-time body tracking. Transf
 
 ### 2. Required Environment Variables (`.env.local`)
 You must set the following keys for the game to function:
+- `NEXT_PUBLIC_SITE_URL`: Your deployed app URL (`https://zenith-dojo.vercel.app` for production).
 - `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase project URL.
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Your Supabase anonymous public key.
 - `GEMINI_API_KEY`: Your Google AI Studio API key (for the AI Director).
+
+For Vercel production, set:
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://zenith-dojo.vercel.app
+```
 
 ### 3. Infrastructure Setup (Manual)
 To enable high-performance tracking (SharedArrayBuffer), you must configure your hosting provider to send these headers:
